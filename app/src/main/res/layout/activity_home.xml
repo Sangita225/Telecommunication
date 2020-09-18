@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="294dp"
+        android:layout_height="188dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="80dp"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="35dp"
+        android:text="Welcome"
+        android:textAlignment="center"
+        android:textColor="#181717"
+        android:textSize="38dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/about1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="20sp"
+        android:justificationMode="inter_word"
+        android:text="It is the best platform for your medical
+needs. You can find a doctor, book an appointment and consult with them as
+per your convenience. "
+        android:textColor="#181717"
+        android:layout_marginTop="15dp"
+        />
+
+    <Button
+        android:id="@+id/btnlogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="25dp"
+        android:textColor="#fff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/rectangle"
+        android:layout_marginTop="25dp"
+        />
+
+    <Button
+        android:id="@+id/btnhomesignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:textSize="25dp"
+        android:textColor="#fff"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/signuprectangle"
+        />
+
+
+</LinearLayout>

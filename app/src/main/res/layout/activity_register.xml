@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/doctorsignup"
+    tools:context=".RegisterActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+            <TextView
+                android:layout_width="207dp"
+                android:layout_height="48dp"
+                android:text="Add Details"
+                android:textColor="#0EB7CE"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:layout_marginTop="50dp"
+                tools:layout_editor_absoluteX="40dp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="264dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/usertype"
+                android:layout_width="107dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Select type"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.476" />
+
+            <Spinner
+                android:id="@+id/spinnerusertype"
+                android:layout_width="136dp"
+                android:layout_height="37dp"
+                android:ems="10"
+                android:entries="@array/usertype"
+                android:hint=" Select Gender"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/usertype"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.705" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/dfname"
+            android:layout_width="392dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+
+            android:ems="10"
+            android:hint="FullName"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
+
+
+        <EditText
+            android:id="@+id/daddress"
+            android:layout_width="392dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+
+            android:ems="10"
+            android:hint="Address"
+            android:inputType="textPersonName"
+            android:padding="10dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="138dp"
+                android:layout_height="26dp"
+                android:layout_marginStart="4dp"
+                android:ems="10"
+                android:hint="Select gender"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.476" />
+
+            <Spinner
+                android:id="@+id/spinnergender"
+                android:layout_width="136dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="84dp"
+                android:ems="10"
+                android:entries="@array/gender"
+                android:hint=" Select Gender"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/gender"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <EditText
+            android:id="@+id/dclinic"
+            android:layout_width="397dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="6dp"
+
+            android:ems="10"
+            android:hint="Clinic/Hospital"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <EditText
+            android:id="@+id/dsepeciality"
+            android:layout_width="392dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+
+            android:ems="10"
+            android:hint="Speciality e.g. degree"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/dexperience"
+            android:layout_width="392dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+
+            android:ems="10"
+            android:hint="Experience e.g. 3yrs"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/demail"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+
+        <EditText
+            android:id="@+id/dpassword"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+
+
+        <Button
+            android:id="@+id/btnsignup"
+            android:layout_width="361dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rectangle"
+            android:text="Submit"
+            android:textAlignment="center"
+            android:textColor="#fff"
+            android:textSize="20dp" />
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
