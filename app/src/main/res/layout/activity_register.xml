@@ -201,6 +201,13 @@
             android:textSize="20dp" />
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usertype"
+            android:id="@+id/tvusertype"/>
+
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

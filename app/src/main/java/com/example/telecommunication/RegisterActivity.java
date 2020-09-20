@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String Mygender,Myuser;
     private Button signup;
     private String downloadUrl;
+    private TextView tvtype;
     private ProgressDialog progressDialog;
 
     FirebaseAuth auth;
@@ -55,11 +57,16 @@ public class RegisterActivity extends AppCompatActivity {
         etemail = findViewById( R.id.demail );
         etpassword = findViewById( R.id.dpassword );
         gender = findViewById( R.id.spinnergender );
+        Mygender=gender.getSelectedItem().toString();
         usertype=findViewById( R.id.spinnerusertype );
         Myuser=usertype.getSelectedItem().toString();
-        Mygender= gender.getSelectedItem().toString();
         signup = findViewById( R.id.btnsignup );
         progressDialog=new ProgressDialog( this );
+
+
+
+     //   tvtype.setText( String.valueOf( usertype.getSelectedItem().toString() ) );
+
 
         auth = FirebaseAuth.getInstance();
 
@@ -68,6 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 String selectedItem = parent.getItemAtPosition(position).toString();
+
                 if(selectedItem.equals( "Patient" )){
                     etclinic.setVisibility(View.GONE );
                     etspeciality.setVisibility( View.GONE );
@@ -80,7 +88,6 @@ public class RegisterActivity extends AppCompatActivity {
                     etspeciality.setVisibility( View.VISIBLE );
                     etexperience.setVisibility( View.VISIBLE );
                 }
-
             }
 
             @Override
@@ -93,37 +100,58 @@ public class RegisterActivity extends AppCompatActivity {
         signup.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txt_username = Myuser;
-                String txt_fullname = etfname.getText().toString();
-                String txt_address = etaddress.getText().toString();
-                String txt_gender = Mygender;
-                String txt_clinic = etclinic.getText().toString();
-                String txt_speciality = etspeciality.getText().toString();
-                String txt_experience= etexperience.getText().toString();
-                String txt_email = etemail.getText().toString();
-                String txt_password = etpassword.getText().toString();
 
-                if(Myuser.equals( "Doctor" )){
-                    if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_fullname) || TextUtils.isEmpty(txt_address )  || TextUtils.isEmpty(txt_gender)
-                            || TextUtils.isEmpty(txt_clinic) || TextUtils.isEmpty(txt_speciality) || TextUtils.isEmpty(txt_experience) || TextUtils.isEmpty(txt_email)
-                            || TextUtils.isEmpty(txt_password))
 
-                    {
-                        Toast.makeText(RegisterActivity.this, "All fileds are required", Toast.LENGTH_SHORT).show();
-                    } else if (txt_password.length() < 6 ){
-                        Toast.makeText(RegisterActivity.this, "password must be at least 6 characters", Toast.LENGTH_SHORT).show();
-                    } else {
-                        register(txt_username,txt_fullname, txt_address ,txt_gender,txt_clinic,txt_speciality, txt_experience,txt_email, txt_password);
+            //   tvtype.setText( usertype.getSelectedItem().toString() );
+
+                        if(usertype.getSelectedItem().toString().trim().equals( "Doctor" )){
+                            String txt_username = usertype.getSelectedItem().toString();
+                            String txt_fullname = etfname.getText().toString();
+                            String txt_address = etaddress.getText().toString();
+                            String txt_gender =gender.getSelectedItem().toString();
+                            String txt_clinic = etclinic.getText().toString();
+                            String txt_speciality = etspeciality.getText().toString();
+                            String txt_experience= etexperience.getText().toString();
+                            String txt_email = etemail.getText().toString();
+                            String txt_password = etpassword.getText().toString();
+
+                            if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_fullname) || TextUtils.isEmpty(txt_address )  || TextUtils.isEmpty(txt_gender)
+                                    || TextUtils.isEmpty(txt_clinic) || TextUtils.isEmpty(txt_speciality) || TextUtils.isEmpty(txt_experience) || TextUtils.isEmpty(txt_email)
+                                    || TextUtils.isEmpty(txt_password))
+
+                            {
+                                Toast.makeText(RegisterActivity.this, "All fileds are required", Toast.LENGTH_SHORT).show();
+                            } else if (txt_password.length() < 6 ){
+                                Toast.makeText(RegisterActivity.this, "password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                            } else {
+                                register(txt_username,txt_fullname, txt_address ,txt_gender,txt_clinic,txt_speciality, txt_experience,txt_email, txt_password);
+                            }
+
+                        }
+                       else if(usertype.getSelectedItem().toString().trim().equals( "Patient" )){
+                            String txt_username = usertype.getSelectedItem().toString();
+                            String txt_fullname = etfname.getText().toString();
+                            String txt_address = etaddress.getText().toString();
+                            String txt_gender =gender.getSelectedItem().toString();
+                            String txt_email = etemail.getText().toString();
+                            String txt_password = etpassword.getText().toString();
+
+                            if (TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_fullname) || TextUtils.isEmpty(txt_address )  || TextUtils.isEmpty(txt_gender)
+                                    || TextUtils.isEmpty(txt_email)
+                                    || TextUtils.isEmpty(txt_password))
+
+                            {
+                                Toast.makeText(RegisterActivity.this, "All fileds are required", Toast.LENGTH_SHORT).show();
+                            } else if (txt_password.length() < 6 ){
+                                Toast.makeText(RegisterActivity.this, "password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                            } else {
+                                registerpatient(txt_username,txt_fullname, txt_address ,txt_gender,txt_email, txt_password);
+                            }
+                        }
+
                     }
-                }
-
-                else{
 
 
-                    Toast.makeText( RegisterActivity.this, "user not found", Toast.LENGTH_SHORT ).show();
-
-                }
-            }
         } );
 
 
@@ -147,6 +175,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             HashMap<String, String> hashMap = new HashMap<>();
                             hashMap.put( "id", userid );
+                            hashMap.put( "usertype", usertype );
                             hashMap.put( "fullname", fullname );
                             hashMap.put( "address", address );
                             hashMap.put( "gender", gender );
@@ -163,7 +192,6 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Intent intent = new Intent( RegisterActivity.this, LoginActivity.class );
-                                        intent.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK );
                                         startActivity( intent );
                                         finish();
                                     }
@@ -175,4 +203,47 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 } );
     }
+
+    private void registerpatient(final String usertype, final String fullname, final String address, final String gender,
+                         String email, String password) {
+
+        auth.createUserWithEmailAndPassword( email, password )
+                .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser firebaseUser = auth.getCurrentUser();
+                            assert firebaseUser != null;
+                            String userid = firebaseUser.getUid();
+
+                            reference = FirebaseDatabase.getInstance().getReference( "Users" ).child( userid );
+
+                            HashMap<String, String> hashMap = new HashMap<>();
+                            hashMap.put( "id", userid );
+                            hashMap.put( "usertype", usertype );
+                            hashMap.put( "fullname", fullname );
+                            hashMap.put( "address", address );
+                            hashMap.put( "gender", gender );
+                            hashMap.put( "fullname", fullname );
+                            hashMap.put( "imageURL", "default" );
+                            hashMap.put( "status", "offline" );
+                            hashMap.put( "search", fullname.toLowerCase() );
+
+                            reference.setValue( hashMap ).addOnCompleteListener( new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Intent intent = new Intent( RegisterActivity.this, LoginActivity.class );
+                                        startActivity( intent );
+                                        finish();
+                                    }
+                                }
+                            } );
+                        } else {
+                            Toast.makeText( RegisterActivity.this, "You can't register woth this email or password", Toast.LENGTH_SHORT ).show();
+                        }
+                    }
+                } );
+    }
+
 }
