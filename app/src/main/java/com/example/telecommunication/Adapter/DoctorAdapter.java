@@ -39,13 +39,13 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final User user = mUsers.get(position);
-        holder.fullname.setText("Name"+user.getFullname());
-        holder.address.setText("Address"+user.getAddress());
-        holder.gender.setText("Gender:"+user.getGender());
-        holder.clinic.setText("Clinic/Hospital:"+user.getClinic());
-        holder.speciality.setText("Speciality:"+user.getSpeciality());
-        holder.experience.setText("Experience:"+user.getExperience());
-        holder.usertype.setText("Address"+user.getUsertype());
+        holder.fullname.setText("Name: "+user.getFullname());
+        holder.address.setText("Address: "+user.getAddress());
+        holder.gender.setText("Gender: "+user.getGender());
+        holder.clinic.setText("Clinic/Hospital: "+user.getClinic());
+        holder.speciality.setText("Speciality: "+user.getSpeciality());
+        holder.experience.setText("Experience: "+user.getExperience());
+        holder.usertype.setText(user.getUsertype());
 
 
         if (user.getImageURL().equals("default")){
